@@ -7,7 +7,6 @@
 [#] CodedBy: Oseid Aldary                                          [<]
 [--------------------------------------------------------------------]
 '''
-
 ## IMPOER LIB ##
 #==============#
 import optparse
@@ -17,7 +16,6 @@ from sys import platform as useros
 #==============#
 
 ## COLORS ##
-
 if useros == "linux" or useros == "linux2":
  rd = "\033[1;31m"
  gr = "\033[1;32m"
@@ -250,7 +248,6 @@ def main():
          print("[#]:Checking.......")
          sleep(1.5)
 	 found = []
-	 test = []
          for p in range( int(ports[0]) , int(ports[1])+1):
                         try:
                            con = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -263,24 +260,22 @@ def main():
                            con.connect((ip,int(p)))
                            print(bl + "\n[+]"+gr+":"+wi+"PORT["+gr+str(p)+wi+"/TCP] <="+gr+"OPEN"+wi+"=>")
 			   found.append(p)
-			   test.append(p)
-
 			except KeyboardInterrupt:
 				print(rd+"[CTRL+C]:"+yl+"Exiting"+rd+".....")
 				sleep(2.5)
 				exit(1)
                         except socket.error:
                               print(rd+"\n[-]"+wi+":PORT["+rd+str(p)+wi+"/TCP] <="+rd+"CLOSE!"+wi+"=>")
+
                         except:
                               print(rd+"\n[!]"+yl+"[ERROR] Something Went Wrong..."+gr+"Try Again :)")
 	                      exit(1)
-	 try:
-	   if found[0] == test[0]:
+	 
+	 if len(found) > 0:
 	        print(rd+"---------------------------------\n[#]"+gr+" Resulit"+rd+" [#]\n")
 	        print(gr+"[*] "+wi+"TARGET:"+bl+" {}\n".format(target)+gr+"[*]"+wi+" OPEN-PORT(S) Found:"+gr+" {}".format(found))
 		print(gr+"[$]"+wi+" Shutdown At: {}".format(timenow))
-
-	 except:
+	 else:
 		print(gr+"---------------------------------\n[#]"+rd+" Resulit"+gr+" [#]\n")
                 print(gr+"[*] "+wi+"TARGET: {}\n".format(target)+gr+"[*]"+wi+" OPEN-PORT(S):"+rd+" No Open Port(s) Found !! :(")
 		print(gr+"[$]"+wi+" Shutdown At: {}".format(timenow))
