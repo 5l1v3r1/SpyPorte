@@ -13,6 +13,7 @@ import optparse
 import socket,datetime
 from time import sleep
 from sys import platform as useros
+from copy import copy
 #==============#
 
 ## COLORS ##
@@ -99,6 +100,15 @@ def main():
   if options.TARGET !=None and options.Oport !=None:
 	target = options.TARGET
 	port = options.Oport
+	def servername():
+	  try:
+	     ser = socket.getservbyport(int(port))
+	     return ser
+	  except OSError:
+	     return "TCP"
+	  except socket.error:
+             return "TCP"
+	servername = servername()
 	global checknet1
 	if target =="127.0.0.1":
 		checknet1 = True
@@ -134,13 +144,13 @@ def main():
 	  else:
 			con.settimeout(5)
 	  con.connect((ip,int(port)))
-          print(bl + "\n[+]"+gr+":"+wi+"PORT["+gr+str(port)+wi+"/TCP] <="+gr+"OPEN"+wi+"=>")
+          print(bl + "\n[+]"+gr+":"+wi+"PORT["+gr+str(port)+wi+"/\033[1;36m"+servername+wi+"] <="+gr+"OPEN"+wi+"=>")
 	 except KeyboardInterrupt:
 			print(rd+"[CTRL+C]:"+yl+"Exiting"+rd+".....")
 			sleep(2.5)
 			exit()
          except socket.error:
-               print(rd+"\n[-]"+wi+":PORT["+rd+str(port)+wi+"/TCP] <="+rd+"CLOSE!"+wi+"=>")
+               print(rd+"\n[-]"+wi+":PORT["+rd+str(port)+wi+"/"+yl+servername+wi+"] <="+rd+"CLOSE!"+wi+"=>")
          except:
                print(rd+"\n[!]"+yl+"[ERROR] Something Went Wrong..."+gr+"Try Again :)")
 	       exit(1)
@@ -194,13 +204,13 @@ def main():
                            else:
                                   con.settimeout(5)
 			   con.connect((ip,int(p)))
-                           print(bl + "\n[+]"+gr+":"+wi+"PORT["+gr+str(p)+wi+"/TCP] <="+gr+"OPEN"+wi+"=>")
+                           print(bl + "\n[+]"+gr+":"+wi+"PORT["+gr+str(p)+wi+"/\033[1;36mTCP]\033[1;37m <="+gr+"OPEN"+wi+"=>")
 			except KeyboardInterrupt:
 				print(rd+"[CTRL+C]:"+yl+"Exiting"+rd+".....")
 				sleep(2.5)
 				break
                         except socket.error:
-                              print(rd+"\n[-]"+wi+":PORT["+rd+str(p)+wi+"/TCP] <="+rd+"CLOSE!"+wi+"=>")
+                              print(rd+"\n[-]"+wi+":PORT["+rd+str(p)+wi+"/"+yl+"TCP"+wi+"] <="+rd+"CLOSE!"+wi+"=>")
                         except:
                              print(rd+"\n[!]"+yl+"[ERROR] Something Went Wrong..."+gr+"Try Again :)")
 	                     exit(1)
@@ -270,7 +280,7 @@ def main():
                         except:
                               print(rd+"\n[!]"+yl+"[ERROR] Something Went Wrong..."+gr+"Try Again :)")
 	                      exit(1)
-	 
+
 	 if len(found) > 0:
 	        print(rd+"---------------------------------\n[#]"+gr+" Resulit"+rd+" [#]\n")
 	        print(gr+"[*] "+wi+"TARGET:"+bl+" {}\n".format(target)+gr+"[*]"+wi+" OPEN-PORT(S) Found:"+gr+" {}".format(found))
