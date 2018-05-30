@@ -85,7 +85,7 @@ EXAMPLES:
 	./SpyPorte.py -S www.fb.com -R 1-1000
         ./SpyPorte.py -s 192.168.1.3 -O 80 -t 10
 
-""")
+""",version='SpyPorte Version: 2.0')
 ################################### DONE! ###########################################
 
 ###################### MAKE MAIN AND FUNCTION #######################################
@@ -96,8 +96,11 @@ def main():
   parse.add_option("-M","-m","--many-port",dest="Mport",type="string")
   parse.add_option("-R","-r","--range-port",dest="Rport",type="string")
   parse.add_option("-T","-t","--timeout",dest="timeout",type="string")
+  parse.add_option("-V","-v",action="store_true",dest="version",default=False)
   (options,args) = parse.parse_args()
-  if options.TARGET !=None and options.Oport !=None:
+  if options.version:
+	print("SpyPorte Version: 2.0")
+  elif options.TARGET !=None and options.Oport !=None:
 	target = options.TARGET
 	port = options.Oport
 	def servername():
@@ -196,6 +199,12 @@ def main():
          print("[#]:Checking.......")
          sleep(1.5)
 	 for p in ports:
+		        try:
+			   servername = socket.getservbyport(int(p))
+                        except socket.error:
+			   servername = "TCP"
+			except OSError:
+			   servername = "TCP"
 			try:
 			   con = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                            if options.timeout !=None:
@@ -204,13 +213,13 @@ def main():
                            else:
                                   con.settimeout(5)
 			   con.connect((ip,int(p)))
-                           print(bl + "\n[+]"+gr+":"+wi+"PORT["+gr+str(p)+wi+"/\033[1;36mTCP]\033[1;37m <="+gr+"OPEN"+wi+"=>")
+                           print(bl + "\n[+]"+gr+":"+wi+"PORT["+gr+str(p)+wi+"/\033[1;36m"+servername+"]\033[1;37m <="+gr+"OPEN"+wi+"=>")
 			except KeyboardInterrupt:
 				print(rd+"[CTRL+C]:"+yl+"Exiting"+rd+".....")
 				sleep(2.5)
 				break
                         except socket.error:
-                              print(rd+"\n[-]"+wi+":PORT["+rd+str(p)+wi+"/"+yl+"TCP"+wi+"] <="+rd+"CLOSE!"+wi+"=>")
+                              print(rd+"\n[-]"+wi+":PORT["+rd+str(p)+wi+"/"+yl+servername+wi+"] <="+rd+"CLOSE!"+wi+"=>")
                         except:
                              print(rd+"\n[!]"+yl+"[ERROR] Something Went Wrong..."+gr+"Try Again :)")
 	                     exit(1)
@@ -260,6 +269,12 @@ def main():
 	 found = []
          for p in range( int(ports[0]) , int(ports[1])+1):
                         try:
+                           servername = socket.getservbyport(int(p))
+                        except socket.error:
+                           servername = "TCP"
+                        except OSError:
+                           servername = "TCP"
+                        try:
                            con = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                            if options.timeout !=None:
                               timeout = options.timeout
@@ -268,14 +283,14 @@ def main():
                                   con.settimeout(5)
 
                            con.connect((ip,int(p)))
-                           print(bl + "\n[+]"+gr+":"+wi+"PORT["+gr+str(p)+wi+"/TCP] <="+gr+"OPEN"+wi+"=>")
+                           print(bl + "\n[+]"+gr+":"+wi+"PORT["+gr+str(p)+wi+"/\033[1;36m"+servername+wi+"] <="+gr+"OPEN"+wi+"=>")
 			   found.append(p)
 			except KeyboardInterrupt:
 				print(rd+"[CTRL+C]:"+yl+"Exiting"+rd+".....")
 				sleep(2.5)
 				exit(1)
                         except socket.error:
-                              print(rd+"\n[-]"+wi+":PORT["+rd+str(p)+wi+"/TCP] <="+rd+"CLOSE!"+wi+"=>")
+                              print(rd+"\n[-]"+wi+":PORT["+rd+str(p)+wi+"/\033[1;33m"+servername+wi+"] <="+rd+"CLOSE!"+wi+"=>")
 
                         except:
                               print(rd+"\n[!]"+yl+"[ERROR] Something Went Wrong..."+gr+"Try Again :)")
