@@ -213,7 +213,7 @@ def main():
                            else:
                                   con.settimeout(5)
 			   con.connect((ip,int(p)))
-                           print(bl + "\n[+]"+gr+":"+wi+"PORT["+gr+str(p)+wi+"/\033[1;36m"+servername+"]\033[1;37m <="+gr+"OPEN"+wi+"=>")
+                           print(bl + "\n[+]"+gr+":"+wi+"PORT["+gr+str(p)+wi+"/\033[1;36m"+servername+wi+"]\033[1;37m <="+gr+"OPEN"+wi+"=>")
 			except KeyboardInterrupt:
 				print(rd+"[CTRL+C]:"+yl+"Exiting"+rd+".....")
 				sleep(2.5)
