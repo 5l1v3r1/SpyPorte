@@ -12,7 +12,7 @@
             
             ![scr1](https://user-images.githubusercontent.com/29546157/40776757-461c0e8a-64bb-11e8-9ab1-06d4de1c8b58.png)
              
-       * Scan For singal port:      
+       * Scan For single port:      
              ![scr2](https://user-images.githubusercontent.com/29546157/40776792-5aafdce6-64bb-11e8-83fc-12dfb1411d26.png)
              
        * Scan For Many Port:      
