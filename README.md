@@ -22,12 +22,21 @@
              ![scr4](https://user-images.githubusercontent.com/29546157/40776811-628e0960-64bb-11e8-97bf-bbb10d238da3.png)
 
 
-   
+# Requirements:
+  - urllib2: reinstall your python if this library is not exist because it comes with python
+  - json:  pip install simplejson
+  
 # install
 * git clone https://github.com/Oseid/SpyPorte.git
 * cd SpyPorte/
 * chmod +x Installer.sh
 * ./Installer.sh
+
+# Note:
+- You Can Install This Tool in windows!
+   * but dont't run Installer.sh file 
+   * just run it using python SpyPorte.py
+
 
 # That's All:
    * This Tool By Oseid Aldary
