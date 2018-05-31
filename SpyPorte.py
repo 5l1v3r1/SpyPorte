@@ -7,13 +7,14 @@
 [#] CodedBy: Oseid Aldary                                          [<]
 [--------------------------------------------------------------------]
 '''
+
 ## IMPOER LIB ##
 #==============#
 import optparse
 import socket,datetime
 from time import sleep
 from sys import platform as useros
-from copy import copy
+import json,urllib2
 #==============#
 
 ## COLORS ##
@@ -85,7 +86,7 @@ EXAMPLES:
 	./SpyPorte.py -S www.fb.com -R 1-1000
         ./SpyPorte.py -s 192.168.1.3 -O 80 -t 10
 
-""",version='SpyPorte Version: 2.0')
+""",version='SpyPorte Version: 2.5')
 ################################### DONE! ###########################################
 
 ###################### MAKE MAIN AND FUNCTION #######################################
@@ -99,7 +100,7 @@ def main():
   parse.add_option("-V","-v",action="store_true",dest="version",default=False)
   (options,args) = parse.parse_args()
   if options.version:
-	print("SpyPorte Version: 2.0")
+	print("SpyPorte Version: 2.5")
   elif options.TARGET !=None and options.Oport !=None:
 	target = options.TARGET
 	port = options.Oport
@@ -135,8 +136,35 @@ def main():
           print("\n[*]:method: ONE-PORT=> [ {} ]".format(port))
           sleep(1.8)
 	  print("[>]:ServerIP: {}".format(ip))
+	  url = "http://ip-api.com/json/"
+          reponse = urllib2.urlopen(url + str(ip) )
+          name = reponse.read()
+          labs = json.loads(name)
+          print("\033[1;31mINFO\033[1;32m:[\033[1;37m{}\033[1;32m]===:".format(ip))
+	  sleep(0.10)
+          print("\t\t\033[1;92m" + " IP: " +"\033[1;37m"+ labs['query'])
+	  sleep(0.10)
+          print("\t\t\033[1;92m" + " Status: " +"\033[1;37m"+ labs['status'])
+          sleep(0.10)
+          print("\t\t\033[1;92m" + " Region: " +"\033[1;37m"+ labs['regionName'])
+          sleep(0.10)
+          print("\t\t\033[1;92m" + " Country: " +"\033[1;37m"+ labs['country'])
+          sleep(0.10)
+          print("\t\t\033[1;92m" + " City: " +"\033[1;37m"+ labs['city'])
+          sleep(0.10)
+          print("\t\t\033[1;92m" + " ISP: "+"\033[1;37m" + labs['isp'])
+          sleep(0.10)
+          print("\t\t\033[1;92m" + " Lat,Lon: "+"\033[1;37m" + str(labs['lat']) + "," + str(labs['lon']))
+          sleep(0.10)
+          print("\t\t\033[1;92m" + " ZIPCODE: "+"\033[1;37m" + labs['zip'])
+          sleep(0.10)
+          print("\t\t\033[1;92m" + " TimeZone: " +"\033[1;37m"+ labs['timezone'])
+          sleep(0.10)
+          print("\t\t\033[1;92m" + " AS: " +"\033[1;37m"+ labs['as'])
+          sleep(0.10)
+          print("\033[1;35m===============================\033[1;37m")
 	  sleep(0.60)
-	  print("[$]:Start At: {}".format(timenow))
+	  print("\n[$]:Start At: {}".format(timenow))
 	  sleep(0.60)
           print("[#]:Checking.......")
           sleep(1.5)
@@ -193,6 +221,33 @@ def main():
 	 print("\n[*]:method: MANY-PORTS=> [ {} ]".format(port))
          sleep(1.8)
          print("[>]:ServerIP: {}".format(ip))
+         url = "http://ip-api.com/json/"
+         reponse = urllib2.urlopen(url + str(ip) )
+         name = reponse.read()
+         labs = json.loads(name)
+         print("\033[1;31mINFO\033[1;32m:[\033[1;37m{}\033[1;32m]===:".format(ip))
+         sleep(0.10)
+         print("\t\t\033[1;92m" + " IP: " +"\033[1;37m"+ labs['query'])
+         sleep(0.10)
+         print("\t\t\033[1;92m" + " Status: " +"\033[1;37m"+ labs['status'])
+         sleep(0.10)
+         print("\t\t\033[1;92m" + " Region: " +"\033[1;37m"+ labs['regionName'])
+         sleep(0.10)
+         print("\t\t\033[1;92m" + " Country: " +"\033[1;37m"+ labs['country'])
+         sleep(0.10)
+         print("\t\t\033[1;92m" + " City: " +"\033[1;37m"+ labs['city'])
+         sleep(0.10)
+         print("\t\t\033[1;92m" + " ISP: "+"\033[1;37m" + labs['isp'])
+         sleep(0.10)
+         print("\t\t\033[1;92m" + " Lat,Lon: "+"\033[1;37m" + str(labs['lat']) + "," + str(labs['lon']))
+         sleep(0.10)
+         print("\t\t\033[1;92m" + " ZIPCODE: "+"\033[1;37m" + labs['zip'])
+         sleep(0.10)
+         print("\t\t\033[1;92m" + " TimeZone: " +"\033[1;37m"+ labs['timezone'])
+         sleep(0.10)
+         print("\t\t\033[1;92m" + " AS: " +"\033[1;37m"+ labs['as'])
+         sleep(0.10)
+         print("\033[1;35m===============================\033[1;37m")
          sleep(0.60)
 	 print("[$]:Start At: {}".format(timenow))
 	 sleep(0.60)
@@ -221,8 +276,7 @@ def main():
                         except socket.error:
                               print(rd+"\n[-]"+wi+":PORT["+rd+str(p)+wi+"/"+yl+servername+wi+"] <="+rd+"CLOSE!"+wi+"=>")
                         except:
-                             print(rd+"\n[!]"+yl+"[ERROR] Something Went Wrong..."+gr+"Try Again :)")
-	                     exit(1)
+                             print(rd+"\n[!]"+yl+"[ERROR] Something Went Wrong\033[1;31m !!!")
 	 print(gr+"---------------------------------\n[$]"+wi+" Shutdown At: {}".format(timenow))
 
 	else:
@@ -261,6 +315,33 @@ def main():
          print("\n[*]:method: RANGE-PORTS=> [ {} ]".format(port))
          sleep(1.8)
          print("[>]:ServerIP: {}".format(ip))
+         url = "http://ip-api.com/json/"
+         reponse = urllib2.urlopen(url + str(ip) )
+         name = reponse.read()
+         labs = json.loads(name)
+         print("\033[1;31mINFO\033[1;32m:[\033[1;37m{}\033[1;32m]===:".format(ip))
+         sleep(0.10)
+         print("\t\t\033[1;92m" + " IP: " +"\033[1;37m"+ labs['query'])
+         sleep(0.10)
+         print("\t\t\033[1;92m" + " Status: " +"\033[1;37m"+ labs['status'])
+         sleep(0.10)
+         print("\t\t\033[1;92m" + " Region: " +"\033[1;37m"+ labs['regionName'])
+         sleep(0.10)
+         print("\t\t\033[1;92m" + " Country: " +"\033[1;37m"+ labs['country'])
+         sleep(0.10)
+         print("\t\t\033[1;92m" + " City: " +"\033[1;37m"+ labs['city'])
+         sleep(0.10)
+         print("\t\t\033[1;92m" + " ISP: "+"\033[1;37m" + labs['isp'])
+         sleep(0.10)
+         print("\t\t\033[1;92m" + " Lat,Lon: "+"\033[1;37m" + str(labs['lat']) + "," + str(labs['lon']))
+         sleep(0.10)
+         print("\t\t\033[1;92m" + " ZIPCODE: "+"\033[1;37m" + labs['zip'])
+         sleep(0.10)
+         print("\t\t\033[1;92m" + " TimeZone: " +"\033[1;37m"+ labs['timezone'])
+         sleep(0.10)
+         print("\t\t\033[1;92m" + " AS: " +"\033[1;37m"+ labs['as'])
+         sleep(0.10)
+         print("\033[1;35m===============================\033[1;37m")
          sleep(0.60)
 	 print("[$]:Start At: {}".format(timenow))
 	 sleep(0.60)
@@ -293,15 +374,14 @@ def main():
                               print(rd+"\n[-]"+wi+":PORT["+rd+str(p)+wi+"/\033[1;33m"+servername+wi+"] <="+rd+"CLOSE!"+wi+"=>")
 
                         except:
-                              print(rd+"\n[!]"+yl+"[ERROR] Something Went Wrong..."+gr+"Try Again :)")
-	                      exit(1)
+                              print(rd+"\n[!]"+yl+"[ERROR] Something Went Wrong \033[1;31m!!!")
 
 	 if len(found) > 0:
-	        print(rd+"---------------------------------\n[#]"+gr+" Resulit"+rd+" [#]\n")
+	        print(rd+"---------------------------------\n[#]"+gr+" Result"+rd+" [#]\n")
 	        print(gr+"[*] "+wi+"TARGET:"+bl+" {}\n".format(target)+gr+"[*]"+wi+" OPEN-PORT(S) Found:"+gr+" {}".format(found))
 		print(gr+"[$]"+wi+" Shutdown At: {}".format(timenow))
 	 else:
-		print(gr+"---------------------------------\n[#]"+rd+" Resulit"+gr+" [#]\n")
+		print(gr+"---------------------------------\n[#]"+rd+" Result"+gr+" [#]\n")
                 print(gr+"[*] "+wi+"TARGET: {}\n".format(target)+gr+"[*]"+wi+" OPEN-PORT(S):"+rd+" No Open Port(s) Found !! :(")
 		print(gr+"[$]"+wi+" Shutdown At: {}".format(timenow))
                 exit(1)
