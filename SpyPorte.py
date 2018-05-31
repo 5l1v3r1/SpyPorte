@@ -74,7 +74,7 @@ USAGE: python ./SpyPorte.py -S <serverIP OR website> [OPTIONS...]
 
 OPTIONS:
 
-	 -O <PORT>            ::> THIS OPTION FOR SCAN [ONE] PORT
+	 -O <PORT>            ::> THIS OPTION FOR SCAN [SINGLE] PORT
 	 -M <Many Port>       ::> THIS OPTION FOR SCAN [MANY] PORTS
 	 -R <Range Port>      ::> THIS OPTION FOR SCAN [RANGE] PORTS
 	 -T <Timeout>         ::> IF You Want Set Timeout For Connection close | Default=5s
@@ -133,7 +133,7 @@ def main():
 		exit(1)
 	 try:
 	  ip = socket.gethostbyname(target)
-          print("\n[*]:method: ONE-PORT=> [ {} ]".format(port))
+          print("\n[*]:method: SINGLE-PORT=> [ {} ]".format(port))
           sleep(1.8)
 	  print("[>]:ServerIP: {}".format(ip))
 	  url = "http://ip-api.com/json/"
@@ -218,7 +218,7 @@ def main():
 
 
 	 ip = socket.gethostbyname(target)
-	 print("\n[*]:method: MANY-PORTS=> [ {} ]".format(port))
+	 print("\n[*]:method: MANY-PORT=> [ {} ]".format(port))
          sleep(1.8)
          print("[>]:ServerIP: {}".format(ip))
          url = "http://ip-api.com/json/"
@@ -312,7 +312,7 @@ def main():
 		print(yl+"\n[!]:"+rd+"Error:["+yl+"404"+rd+"]"+wi+" SERVER Not Found"+rd+"!!")
 		exit(1)
          ip = socket.gethostbyname(target)
-         print("\n[*]:method: RANGE-PORTS=> [ {} ]".format(port))
+         print("\n[*]:method: RANGE-PORT=> [ {} ]".format(port))
          sleep(1.8)
          print("[>]:ServerIP: {}".format(ip))
          url = "http://ip-api.com/json/"
