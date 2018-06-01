@@ -14,7 +14,17 @@ import optparse
 import socket,datetime
 from time import sleep
 from sys import platform as useros
-import json,urllib2
+try:
+   import json
+except:
+	print("[!] Error [ Json ] Is Not Exist !!!\n[*] Please Install It Using This Command: pip install simplejson")
+	exit(1)
+try:
+   import urllib2
+except:
+	print("[!] Error [ Urllib2 ] Is Not Exist !!!\n[*] Please  reinstall your python, because it comes with python")
+	exit(1)
+	
 #==============#
 
 ## COLORS ##
@@ -23,12 +33,16 @@ if useros == "linux" or useros == "linux2":
  gr = "\033[1;32m"
  yl = "\033[1;33m"
  bl = "\033[1;34m"
+ pu = "\033[1;35m"
+ cy = "\033[1;36m"
  wi = "\033[1;37m"
 else:
  rd = ""
  gr = ""
  yl = ""
  bl = ""
+ pu = ""
+ cy = ""
  wi = ""
 ##########################
 
@@ -140,29 +154,29 @@ def main():
           reponse = urllib2.urlopen(url + str(ip) )
           name = reponse.read()
           labs = json.loads(name)
-          print("\033[1;31mINFO\033[1;32m:[\033[1;37m{}\033[1;32m]===:".format(ip))
+          print(rd+"INFO"+gr+":["+wi+str(ip)+gr+"]===:")
 	  sleep(0.10)
-          print("\t\t\033[1;92m" + " IP: " +"\033[1;37m"+ labs['query'])
+          print(gr + "\t\t IP: " +wi+ labs['query'])
 	  sleep(0.10)
-          print("\t\t\033[1;92m" + " Status: " +"\033[1;37m"+ labs['status'])
+          print(gr+ "\t\t Status: " +wi+ labs['status'])
           sleep(0.10)
-          print("\t\t\033[1;92m" + " Region: " +"\033[1;37m"+ labs['regionName'])
+          print(gr+ "\t\t Region: " +wi+ labs['regionName'])
           sleep(0.10)
-          print("\t\t\033[1;92m" + " Country: " +"\033[1;37m"+ labs['country'])
+          print(gr + "\t\t Country: " +wi+ labs['country'])
           sleep(0.10)
-          print("\t\t\033[1;92m" + " City: " +"\033[1;37m"+ labs['city'])
+          print(gr + "\t\t City: " +wi+ labs['city'])
           sleep(0.10)
-          print("\t\t\033[1;92m" + " ISP: "+"\033[1;37m" + labs['isp'])
+          print(gr + "\t\t ISP: "+wi + labs['isp'])
           sleep(0.10)
-          print("\t\t\033[1;92m" + " Lat,Lon: "+"\033[1;37m" + str(labs['lat']) + "," + str(labs['lon']))
+          print(gr + "\t\t Lat,Lon: "+wi + str(labs['lat']) + "," + str(labs['lon']))
           sleep(0.10)
-          print("\t\t\033[1;92m" + " ZIPCODE: "+"\033[1;37m" + labs['zip'])
+          print(gr + "\t\t ZIPCODE: "+wi + labs['zip'])
           sleep(0.10)
-          print("\t\t\033[1;92m" + " TimeZone: " +"\033[1;37m"+ labs['timezone'])
+          print(gr + "\t\t TimeZone: " +wi+ labs['timezone'])
           sleep(0.10)
-          print("\t\t\033[1;92m" + " AS: " +"\033[1;37m"+ labs['as'])
+          print(gr + "\t\t AS: " +wi+ labs['as'])
           sleep(0.10)
-          print("\033[1;35m===============================\033[1;37m")
+          print(pu+"==============================="+wi)
 	  sleep(0.60)
 	  print("\n[$]:Start At: {}".format(timenow))
 	  sleep(0.60)
@@ -175,7 +189,7 @@ def main():
 	  else:
 			con.settimeout(5)
 	  con.connect((ip,int(port)))
-          print(bl + "\n[+]"+gr+":"+wi+"PORT["+gr+str(port)+wi+"/\033[1;36m"+servername+wi+"] <="+gr+"OPEN"+wi+"=>")
+          print(bl + "\n[+]"+gr+":"+wi+"PORT["+gr+str(port)+wi+"/"+cy+servername+wi+"] <="+gr+"OPEN"+wi+"=>")
 	 except KeyboardInterrupt:
 			print(rd+"[CTRL+C]:"+yl+"Exiting"+rd+".....")
 			sleep(2.5)
@@ -225,30 +239,30 @@ def main():
          reponse = urllib2.urlopen(url + str(ip) )
          name = reponse.read()
          labs = json.loads(name)
-         print("\033[1;31mINFO\033[1;32m:[\033[1;37m{}\033[1;32m]===:".format(ip))
+         print(rd+"INFO"+gr+":["+wi+str(ip)+gr+"]===:".)
          sleep(0.10)
-         print("\t\t\033[1;92m" + " IP: " +"\033[1;37m"+ labs['query'])
+         print(gr + "\t\t IP: " +wi+ labs['query'])
          sleep(0.10)
-         print("\t\t\033[1;92m" + " Status: " +"\033[1;37m"+ labs['status'])
+         print(gr+ "\t\t Status: " +wi+ labs['status'])
          sleep(0.10)
-         print("\t\t\033[1;92m" + " Region: " +"\033[1;37m"+ labs['regionName'])
+         print(gr+ "\t\t Region: " +wi+ labs['regionName'])
          sleep(0.10)
-         print("\t\t\033[1;92m" + " Country: " +"\033[1;37m"+ labs['country'])
+         print(gr + "\t\t Country: " +wi+ labs['country'])
          sleep(0.10)
-         print("\t\t\033[1;92m" + " City: " +"\033[1;37m"+ labs['city'])
+         print(gr + "\t\t City: " +wi+ labs['city'])
          sleep(0.10)
-         print("\t\t\033[1;92m" + " ISP: "+"\033[1;37m" + labs['isp'])
+         print(gr + "\t\t ISP: "+wi + labs['isp'])
          sleep(0.10)
-         print("\t\t\033[1;92m" + " Lat,Lon: "+"\033[1;37m" + str(labs['lat']) + "," + str(labs['lon']))
+         print(gr + "\t\t Lat,Lon: "+wi + str(labs['lat']) + "," + str(labs['lon']))
          sleep(0.10)
-         print("\t\t\033[1;92m" + " ZIPCODE: "+"\033[1;37m" + labs['zip'])
+         print(gr + "\t\t ZIPCODE: "+wi + labs['zip'])
          sleep(0.10)
-         print("\t\t\033[1;92m" + " TimeZone: " +"\033[1;37m"+ labs['timezone'])
+         print(gr + "\t\t TimeZone: " +wi+ labs['timezone'])
          sleep(0.10)
-         print("\t\t\033[1;92m" + " AS: " +"\033[1;37m"+ labs['as'])
+         print(gr + "\t\t AS: " +wi+ labs['as'])
          sleep(0.10)
-         print("\033[1;35m===============================\033[1;37m")
-         sleep(0.60)
+         print(pu+"==============================="+wi)
+	 sleep(0.60)
 	 print("[$]:Start At: {}".format(timenow))
 	 sleep(0.60)
          print("[#]:Checking.......")
@@ -268,7 +282,7 @@ def main():
                            else:
                                   con.settimeout(5)
 			   con.connect((ip,int(p)))
-                           print(bl + "\n[+]"+gr+":"+wi+"PORT["+gr+str(p)+wi+"/\033[1;36m"+servername+wi+"]\033[1;37m <="+gr+"OPEN"+wi+"=>")
+                           print(bl + "\n[+]"+gr+":"+wi+"PORT["+gr+str(p)+wi+"/"+cy+servername+wi+"]"+wi+" <="+gr+"OPEN"+wi+"=>")
 			except KeyboardInterrupt:
 				print(rd+"[CTRL+C]:"+yl+"Exiting"+rd+".....")
 				sleep(2.5)
@@ -319,29 +333,29 @@ def main():
          reponse = urllib2.urlopen(url + str(ip) )
          name = reponse.read()
          labs = json.loads(name)
-         print("\033[1;31mINFO\033[1;32m:[\033[1;37m{}\033[1;32m]===:".format(ip))
+         print(rd+"INFO"+gr+":["+wi+str(ip)+gr+"]===:".)
          sleep(0.10)
-         print("\t\t\033[1;92m" + " IP: " +"\033[1;37m"+ labs['query'])
+         print(gr + "\t\t IP: " +wi+ labs['query'])
          sleep(0.10)
-         print("\t\t\033[1;92m" + " Status: " +"\033[1;37m"+ labs['status'])
+         print(gr+ "\t\t Status: " +wi+ labs['status'])
          sleep(0.10)
-         print("\t\t\033[1;92m" + " Region: " +"\033[1;37m"+ labs['regionName'])
+         print(gr+ "\t\t Region: " +wi+ labs['regionName'])
          sleep(0.10)
-         print("\t\t\033[1;92m" + " Country: " +"\033[1;37m"+ labs['country'])
+         print(gr + "\t\t Country: " +wi+ labs['country'])
          sleep(0.10)
-         print("\t\t\033[1;92m" + " City: " +"\033[1;37m"+ labs['city'])
+         print(gr + "\t\t City: " +wi+ labs['city'])
          sleep(0.10)
-         print("\t\t\033[1;92m" + " ISP: "+"\033[1;37m" + labs['isp'])
+         print(gr + "\t\t ISP: "+wi + labs['isp'])
          sleep(0.10)
-         print("\t\t\033[1;92m" + " Lat,Lon: "+"\033[1;37m" + str(labs['lat']) + "," + str(labs['lon']))
+         print(gr + "\t\t Lat,Lon: "+wi + str(labs['lat']) + "," + str(labs['lon']))
          sleep(0.10)
-         print("\t\t\033[1;92m" + " ZIPCODE: "+"\033[1;37m" + labs['zip'])
+         print(gr + "\t\t ZIPCODE: "+wi + labs['zip'])
          sleep(0.10)
-         print("\t\t\033[1;92m" + " TimeZone: " +"\033[1;37m"+ labs['timezone'])
+         print(gr + "\t\t TimeZone: " +wi+ labs['timezone'])
          sleep(0.10)
-         print("\t\t\033[1;92m" + " AS: " +"\033[1;37m"+ labs['as'])
+         print(gr + "\t\t AS: " +wi+ labs['as'])
          sleep(0.10)
-         print("\033[1;35m===============================\033[1;37m")
+         print(pu+"==============================="+wi)
          sleep(0.60)
 	 print("[$]:Start At: {}".format(timenow))
 	 sleep(0.60)
@@ -364,14 +378,14 @@ def main():
                                   con.settimeout(5)
 
                            con.connect((ip,int(p)))
-                           print(bl + "\n[+]"+gr+":"+wi+"PORT["+gr+str(p)+wi+"/\033[1;36m"+servername+wi+"] <="+gr+"OPEN"+wi+"=>")
+                           print(bl + "\n[+]"+gr+":"+wi+"PORT["+gr+str(p)+wi+"/"+cy+servername+wi+"] <="+gr+"OPEN"+wi+"=>")
 			   found.append(p)
 			except KeyboardInterrupt:
 				print(rd+"[CTRL+C]:"+yl+"Exiting"+rd+".....")
 				sleep(2.5)
 				exit(1)
                         except socket.error:
-                              print(rd+"\n[-]"+wi+":PORT["+rd+str(p)+wi+"/\033[1;33m"+servername+wi+"] <="+rd+"CLOSE!"+wi+"=>")
+                              print(rd+"\n[-]"+wi+":PORT["+rd+str(p)+wi+"/"+yl+servername+wi+"] <="+rd+"CLOSE!"+wi+"=>")
 
                         except:
                               print(rd+"\n[!]"+yl+"[ERROR] Something Went Wrong \033[1;31m!!!")
