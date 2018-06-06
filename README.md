@@ -10,16 +10,16 @@
        * SpyPorte Usage Message:
              
             
-            ![scr1](https://user-images.githubusercontent.com/29546157/40776757-461c0e8a-64bb-11e8-9ab1-06d4de1c8b58.png)
+            ![spyport-msg](https://user-images.githubusercontent.com/29546157/41063674-d4ab3588-69c8-11e8-8c0f-75c4cc0c8414.png)
              
        * Scan For single port:      
-             ![scr2](https://user-images.githubusercontent.com/29546157/40776792-5aafdce6-64bb-11e8-83fc-12dfb1411d26.png)
+             ![spyportsingle-port](https://user-images.githubusercontent.com/29546157/41063679-da716f14-69c8-11e8-91f6-63eb5a79d613.png)
              
        * Scan For Many Port:      
-             ![scr3](https://user-images.githubusercontent.com/29546157/40776801-5e7e7ae4-64bb-11e8-9fda-b6571d6fed0a.png)
+             ![spyportmany-port](https://user-images.githubusercontent.com/29546157/41063685-dda96768-69c8-11e8-8c6a-fc1405ac0175.png)
              
        * Scan Range Port:      
-             ![scr4](https://user-images.githubusercontent.com/29546157/40776811-628e0960-64bb-11e8-97bf-bbb10d238da3.png)
+             ![spyportrange-port](https://user-images.githubusercontent.com/29546157/41063690-e1785d5e-69c8-11e8-8ae0-cfec6de5fb09.png)
 
 
 # Requirements:
