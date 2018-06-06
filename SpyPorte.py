@@ -83,7 +83,7 @@ def msgerror():
 
 ##########################################=>> MAKE TOOL OPTIONS <<=###########################################
 
-parse = optparse.OptionParser("""
+parse = optparse.OptionParser(wi+"""
 USAGE: python ./SpyPorte.py -S <serverIP OR website> [OPTIONS...]
 
 OPTIONS:
@@ -98,8 +98,9 @@ EXAMPLES:
 	./SpyPorte.py -S www.google.com -O 80
 	./SpyPorte.py -S 192.168.1.1 -M 80,443,21,22,23,25,53
 	./SpyPorte.py -S www.fb.com -R 1-1000
-        ./SpyPorte.py -s 192.168.1.3 -O 80 -t 10
 
+        ./SpyPorte.py --server 192.168.1.3 --one-port 80 --timeout 10
+	./SpyPorte.py -s ww.google.com -m 21,22,23,80,443 -t 10
 """,version='SpyPorte Version: 2.5')
 ################################### DONE! ###########################################
 
