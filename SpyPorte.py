@@ -147,9 +147,9 @@ def main():
 		exit(1)
 	 try:
 	  ip = socket.gethostbyname(target)
-          print("\n[*]:method: SINGLE-PORT=> [ {} ]".format(port))
+          print(wi+"\n[*]:method: SINGLE-PORT=> [ {} ]".format(port))
           sleep(1.8)
-	  print("[>]:ServerIP: {}".format(ip))
+	  print(wi+"[>]:ServerIP: {}".format(ip))
           try:
 	   url = "http://ip-api.com/json/"
            reponse = urllib2.urlopen(url + str(ip) )
@@ -182,16 +182,16 @@ def main():
 	  except:
 		pass
 	  sleep(0.60)
-	  print("[$]:Start At: {}".format(timenow))
+	  print(wi+"[$]:Start At: {}".format(timenow))
 	  sleep(0.60)
-          print("[#]:Checking.......")
+          print(wi+"[#]:Checking.......")
           sleep(1.5)
 	  con = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	  if options.timeout !=None:
 			timeout = options.timeout
 			con.settimeout(int(timeout))
 	  else:
-			con.settimeout(5)
+		 	con.settimeout(5)
 	  con.connect((ip,int(port)))
           print(bl + "\n[+]"+gr+":"+wi+"PORT["+gr+str(port)+wi+"/"+cy+servername+wi+"] <="+gr+"OPEN"+wi+"=>")
 	 except KeyboardInterrupt:
@@ -236,9 +236,9 @@ def main():
 
 
 	 ip = socket.gethostbyname(target)
-	 print("\n[*]:method: MANY-PORT=> [ {} ]".format(port))
+	 print(wi+"\n[*]:method: MANY-PORT=> [ {} ]".format(port))
          sleep(1.8)
-         print("[>]:ServerIP: {}".format(ip))
+         print(wi+"[>]:ServerIP: {}".format(ip))
          try:
 	   url = "http://ip-api.com/json/"
            reponse = urllib2.urlopen(url + str(ip) )
@@ -271,9 +271,9 @@ def main():
 	 except:
 		pass
 	 sleep(0.60)
-	 print("[$]:Start At: {}".format(timenow))
+	 print(wi+"[$]:Start At: {}".format(timenow))
 	 sleep(0.60)
-         print("[#]:Checking.......")
+         print(wi+"[#]:Checking.......")
          sleep(1.5)
 	 for p in ports:
 		        try:
@@ -334,9 +334,9 @@ def main():
 		print(yl+"\n[!]:"+rd+"Error:["+yl+"404"+rd+"]"+wi+" SERVER Not Found"+rd+"!!")
 		exit(1)
          ip = socket.gethostbyname(target)
-         print("\n[*]:method: RANGE-PORT=> [ {} ]".format(port))
+         print(wi+"\n[*]:method: RANGE-PORT=> [ {} ]".format(port))
          sleep(1.8)
-         print("[>]:ServerIP: {}".format(ip))
+         print(wi+"[>]:ServerIP: {}".format(ip))
          try:
 	   url = "http://ip-api.com/json/"
            reponse = urllib2.urlopen(url + str(ip) )
@@ -369,9 +369,9 @@ def main():
 	 except:
 		pass
          sleep(0.60)
-	 print("[$]:Start At: {}".format(timenow))
+	 print(wi+"[$]:Start At: {}".format(timenow))
 	 sleep(0.60)
-         print("[#]:Checking.......")
+         print(wi+"[#]:Checking.......")
          sleep(1.5)
 	 found = []
          for p in range( int(ports[0]) , int(ports[1])+1):
