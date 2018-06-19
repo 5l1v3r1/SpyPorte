@@ -387,8 +387,6 @@ def main():
                            if options.timeout !=None:
                               timeout = options.timeout
                               con.settimeout(int(timeout))
-                           else:
-                                  con.settimeout(5)
 
                            con.connect((ip,int(p)))
                            print(bl + "\n[+]"+gr+":"+wi+"PORT["+gr+str(p)+wi+"/"+cy+servername+wi+"] <="+gr+"OPEN"+wi+"=>")
