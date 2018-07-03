@@ -96,7 +96,7 @@ parse = optparse.OptionParser(wi+"""\
  |	 -O <PORT>            ::> THIS OPTION FOR SCAN [SINGLE] PORT
  |	 -M <Many Port>       ::> THIS OPTION FOR SCAN [MANY] PORTS
  |	 -R <Range Port>      ::> THIS OPTION FOR SCAN [RANGE] PORTS
- |	 -T <Timeout>         ::> IF You Want Set Timeout For Connection close | Default=5s
+ |	 -T <Timeout>         ::> IF You Want Set Timeout For Connection close| Default=5s
  |
  |>EXAMPLES<:
  |
