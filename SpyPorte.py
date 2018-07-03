@@ -105,7 +105,7 @@ parse = optparse.OptionParser(wi+"""\
  |	 spyporte -S www.fb.com -R 1-1000
  |
  |       spyporte --server 192.168.1.3 --one-port 80 --timeout 10
- |	 spyporte -s ww.google.com -m 21,22,23,80,443 -t 10
+ |	 spyporte -s www.google.com -m 21,22,23,80,443 -t 10
 [^] """,version='SpyPorte Version: 2.5')
 ################################### DONE! ###########################################
 
