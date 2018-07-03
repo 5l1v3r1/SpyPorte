@@ -304,7 +304,7 @@ def main():
                         except socket.error:
                               print(rd+"\n[-]"+wi+":PORT["+rd+str(p)+wi+"/"+yl+servername+wi+"] <="+rd+"CLOSE!"+wi+"=>")
                         except:
-                             print(rd+"\n[!]"+yl+"[ERROR] Something Went Wrong\033[1;31m !!!")
+                             print(rd+"\n[!]"+yl+"[ERROR] Something Went Wrong"+rd+" !!!")
 	 print(gr+"---------------------------------\n[$]"+wi+" Shutdown At: {}".format(timenow))
 
 	else:
@@ -404,7 +404,7 @@ def main():
                         except socket.error:
                               print(rd+"\n[-]"+wi+":PORT["+rd+str(p)+wi+"/"+yl+servername+wi+"] <="+rd+"CLOSE!"+wi+"=>")
                         except:
-                              print(rd+"\n[!]"+yl+"[ERROR] Something Went Wrong \033[1;31m!!!")
+                              print(rd+"\n[!]"+yl+"[ERROR] Something Went Wrong "+rd+"!!!")
 
 	  if len(found) > 0:
 	        print(rd+"---------------------------------\n[#]"+gr+" Result"+rd+" [#]\n")
