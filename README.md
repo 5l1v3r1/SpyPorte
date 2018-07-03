@@ -33,7 +33,7 @@
 * ./Installer.sh
 
 # Note:
-- You Can Install This Tool in windows!
+- You Can Install This Tool On windows!
    * but dont't run Installer.sh file 
    * just run it using python SpyPorte.py
 
