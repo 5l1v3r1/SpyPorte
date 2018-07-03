@@ -1,4 +1,5 @@
 #!/usr/bin/python
+
 '''
 [>]                WELCOME TO SpyPorte SOURCE CODE                 [<]
 [-]----------------------------------------------------------------[-]
@@ -21,6 +22,8 @@ except:
 	exit(1)
 try:
    import urllib2
+except KeyboardInterrupt:
+    pass
 except:
 	print("[!] Error [ Urllib2 ] Is Not Exist !!!\n[*] Please  reinstall your python, because it comes with python")
 	exit(1)
@@ -83,36 +86,38 @@ def msgerror():
 
 ##########################################=>> MAKE TOOL OPTIONS <<=###########################################
 
-parse = optparse.OptionParser(wi+"""
-USAGE: python ./SpyPorte.py -S <serverIP OR website> [OPTIONS...]
-
-OPTIONS:
-
-	 -O <PORT>            ::> THIS OPTION FOR SCAN [SINGLE] PORT
-	 -M <Many Port>       ::> THIS OPTION FOR SCAN [MANY] PORTS
-	 -R <Range Port>      ::> THIS OPTION FOR SCAN [RANGE] PORTS
-	 -T <Timeout>         ::> IF You Want Set Timeout For Connection close | Default=5s
-
-EXAMPLES:
-
-	./SpyPorte.py -S www.google.com -O 80
-	./SpyPorte.py -S 192.168.1.1 -M 80,443,21,22,23,25,53
-	./SpyPorte.py -S www.fb.com -R 1-1000
-
-        ./SpyPorte.py --server 192.168.1.3 --one-port 80 --timeout 10
-	./SpyPorte.py -s ww.google.com -m 21,22,23,80,443 -t 10
-""",version='SpyPorte Version: 2.5')
+parse = optparse.OptionParser(wi+"""\
+[^]
+ |>> USAGE: python ./SpyPorte.py -S <serverIP OR website> [OPTIONS...]
+ |
+ |
+ |>OPTIONS<:
+ |
+ |	 -O <PORT>            ::> THIS OPTION FOR SCAN [SINGLE] PORT
+ |	 -M <Many Port>       ::> THIS OPTION FOR SCAN [MANY] PORTS
+ |	 -R <Range Port>      ::> THIS OPTION FOR SCAN [RANGE] PORTS
+ |	 -T <Timeout>         ::> IF You Want Set Timeout For Connection close | Default=5s
+ |
+ |>EXAMPLES<:
+ |
+ |	 spyporte -S www.google.com -O 80
+ |	 spyporte -S 192.168.1.1 -M 80,443,21,22,23,25,53
+ |	 spyporte -S www.fb.com -R 1-1000
+ |
+ |       spyporte --server 192.168.1.3 --one-port 80 --timeout 10
+ |	 spyporte -s ww.google.com -m 21,22,23,80,443 -t 10
+[^] """,version='SpyPorte Version: 2.5')
 ################################### DONE! ###########################################
 
 ###################### MAKE MAIN AND FUNCTION #######################################
 
 def main():
-  parse.add_option("-S","-s","--server",dest="TARGET",type="string")
-  parse.add_option("-O","-o","--one-port",dest="Oport",type="string")
-  parse.add_option("-M","-m","--many-port",dest="Mport",type="string")
-  parse.add_option("-R","-r","--range-port",dest="Rport",type="string")
-  parse.add_option("-T","-t","--timeout",dest="timeout",type="string")
-  parse.add_option("-V","-v",action="store_true",dest="version",default=False)
+  parse.add_option("-S","-s","--server",'--SERVER',dest="TARGET",type="string")
+  parse.add_option("-O","-o","--one-port",'--ONE-PORT',dest="Oport",type="string")
+  parse.add_option("-M","-m","--many-port",'--MANY-PORT',dest="Mport",type="string")
+  parse.add_option("-R","-r","--range-port",'--RANGE-PORT',dest="Rport",type="string")
+  parse.add_option("-T","-t","--timeout",'--TIMEOUT',dest="timeout",type="string")
+  parse.add_option("-V","-v",'--VERSION',action="store_true",dest="version",default=False)
   (options,args) = parse.parse_args()
   if options.version:
 	print("SpyPorte Version: 2.5")
@@ -375,7 +380,8 @@ def main():
          print(wi+"[#]:Checking.......")
          sleep(1.5)
 	 found = []
-         for p in range( int(ports[0]) , int(ports[1])+1):
+         try:
+          for p in range( int(ports[0]) , int(ports[1])+1):
                         try:
                            servername = socket.getservbyport(int(p))
                         except socket.error:
@@ -397,19 +403,23 @@ def main():
 				exit(1)
                         except socket.error:
                               print(rd+"\n[-]"+wi+":PORT["+rd+str(p)+wi+"/"+yl+servername+wi+"] <="+rd+"CLOSE!"+wi+"=>")
-
                         except:
                               print(rd+"\n[!]"+yl+"[ERROR] Something Went Wrong \033[1;31m!!!")
 
-	 if len(found) > 0:
+	  if len(found) > 0:
 	        print(rd+"---------------------------------\n[#]"+gr+" Result"+rd+" [#]\n")
 	        print(gr+"[*] "+wi+"TARGET:"+bl+" {}\n".format(target)+gr+"[*]"+wi+" OPEN-PORT(S) Found:"+gr+" {}".format(found))
 		print(gr+"[$]"+wi+" Shutdown At: {}".format(timenow))
-	 else:
+	  else:
 		print(gr+"---------------------------------\n[#]"+rd+" Result"+gr+" [#]\n")
                 print(gr+"[*] "+wi+"TARGET: {}\n".format(target)+gr+"[*]"+wi+" OPEN-PORT(S):"+rd+" No Open Port(s) Found !! :(")
 		print(gr+"[$]"+wi+" Shutdown At: {}".format(timenow))
                 exit(1)
+         except KeyboardInterrupt:
+	  print(rd+"\n[CTRL+C]:"+yl+"Exiting"+rd+".....")
+	  sleep(2.5)
+	  exit(1)
+
         else:
                 msgerror()
   else:
@@ -419,6 +429,7 @@ def main():
 
 if __name__=="__main__":
 	main()
+
 ##############################################################
 ##################### 		     #########################
 #####################   END OF TOOL  #########################
