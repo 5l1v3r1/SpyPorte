@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 '''
 [>]                WELCOME TO SpyPorte SOURCE CODE                 [<]
@@ -14,7 +15,7 @@
 import optparse
 import socket,datetime
 from time import sleep
-from sys import platform as useros
+from os import system as sy
 try:
    import json
 except:
@@ -28,26 +29,16 @@ except:
 	print("[!] Error [ Urllib2 ] Is Not Exist !!!\n[*] Please  reinstall your python, because it comes with python")
 	exit(1)
 
-#==============#
 
-## COLORS ##
-if useros == "linux" or useros == "linux2":
- rd = "\033[1;31m"
- gr = "\033[1;32m"
- yl = "\033[1;33m"
- bl = "\033[1;34m"
- pu = "\033[1;35m"
- cy = "\033[1;36m"
- wi = "\033[1;37m"
-else:
- rd = ""
- gr = ""
- yl = ""
- bl = ""
- pu = ""
- cy = ""
- wi = ""
-##########################
+####=COLORS=########
+wi = '\033[1;37m' ##>>White
+rd = '\033[1;31m' ##>Red
+gr = '\033[1;32m' ##>Green
+yl = '\033[1;33m' ##>Yallow
+bl = '\033[1;34m' ##>Blou
+pu = '\033[1;35m' ##>Purple
+cy = '\033[1;36m' ##>Cyan
+####################
 
 ############# show time #############
                                     #
@@ -69,7 +60,7 @@ def check():
      conn = socket.create_connection((host, 80), 2)
      return True
   except:
-	pass
+     pass
   return False
 checknet1 = check()
 checknet2 = checknet1
@@ -85,28 +76,35 @@ def msgerror():
 ###################
 
 ##########################################=>> MAKE TOOL OPTIONS <<=###########################################
-
+sy("cls || clear")	
 parse = optparse.OptionParser(wi+"""\
-[^]
- |>> USAGE: python ./SpyPorte.py -S <serverIP OR website> [OPTIONS...]
- |
- |
- |>OPTIONS<:
- |
- |	 -O <PORT>            ::> THIS OPTION FOR SCAN [SINGLE] PORT
- |	 -M <Many Port>       ::> THIS OPTION FOR SCAN [MANY] PORTS
- |	 -R <Range Port>      ::> THIS OPTION FOR SCAN [RANGE] PORTS
- |	 -T <Timeout>         ::> IF You Want Set Timeout For Connection close | Default=5s
- |
- |>EXAMPLES<:
- |
- |	 spyporte -S www.google.com -O 80
- |	 spyporte -S 192.168.1.1 -M 80,443,21,22,23,25,53
- |	 spyporte -S www.fb.com -R 1-1000
- |
- |       spyporte --server 192.168.1.3 --one-port 80 --timeout 10
- |	 spyporte -s www.google.com -m 21,22,23,80,443 -t 10
-[^] """,version='SpyPorte Version: 2.5')
+
+[^]                                                                   [^]
+ +=====================================================================+
+ |> USAGE: python ./SpyPorte.py -S <serverIP OR website> [OPTIONS...] <|
+ +=====================================================================+
+ |                                                                     |
+ |>OPTIONS<:                                                           |
+ +=====================================================================+
+ |                                                                     |
+ |	 -O <PORT>            ::> THIS OPTION FOR SCAN [SINGLE] PORT   |
+ |	 -M <Many Port>       ::> THIS OPTION FOR SCAN [MANY] PORTS    |
+ |	 -R <Range Port>      ::> THIS OPTION FOR SCAN [RANGE] PORTS   |
+ |	 -T <Timeout>         ::> Set Timeout For Connection close     |
+ |                                                                     |
+ |>EXAMPLES<:                                                          |
+ +=====================================================================+
+ |                                                                     |
+ |	 spyporte -S www.google.com -O 80                              |
+ |	 spyporte -S 192.168.1.1 -M 80,443,21,22,23,25,53              |
+ |	 spyporte -S www.fb.com -R 1-1000                              |
+ |                                                                     |
+ |       spyporte --server 192.168.1.3 --one-port 80 --timeout 10      |
+ |	 spyporte -s www.google.com -m 21,22,23,80,443 -t 10           |
+ |                                                                     |
+ +=====================================================================+
+[v]                                                                   [v]
+""",version='SpyPorte Version: 2.5')
 ################################### DONE! ###########################################
 
 ###################### MAKE MAIN AND FUNCTION #######################################
@@ -120,7 +118,7 @@ def main():
   parse.add_option("-V","-v",'--VERSION',action="store_true",dest="version",default=False)
   (options,args) = parse.parse_args()
   if options.version:
-	print("SpyPorte Version: 2.5")
+     print("SpyPorte Version: 2.5")
   elif options.TARGET !=None and options.Oport !=None:
 	target = options.TARGET
 	port = options.Oport
@@ -393,7 +391,8 @@ def main():
                            if options.timeout !=None:
                               timeout = options.timeout
                               con.settimeout(int(timeout))
-
+                           else:
+                              con.settimeout(0.05)
                            con.connect((ip,int(p)))
                            print(bl + "\n[+]"+gr+":"+wi+"PORT["+gr+str(p)+wi+"/"+cy+servername+wi+"] <="+gr+"OPEN"+wi+"=>")
 			   found.append(p)
@@ -423,6 +422,7 @@ def main():
         else:
                 msgerror()
   else:
+     
 	print(parse.usage)
 	exit(1)
 
