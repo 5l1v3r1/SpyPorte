@@ -379,7 +379,7 @@ def main():
          sleep(1.5)
 	 found = []
          try:
-          for p in range( int(ports[0]) , int(ports[1])+1):
+          for p in xrange( int(ports[0]) , int(ports[1])+1):
                         try:
                            servername = socket.getservbyport(int(p))
                         except socket.error:
