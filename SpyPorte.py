@@ -399,7 +399,18 @@ def main():
 			except KeyboardInterrupt:
 				print(rd+"[CTRL+C]:"+yl+"Exiting"+rd+".....")
 				sleep(2.5)
+                                if len(found) > 0:
+                                 print(gr+"\n["+cy+"*"+gr+"]"+wi+" OPEN PORT(s) "+gr+"Found!\n")
+                                 for i in found:
+                                  try:
+                                   servername = socket.getservbyport(int(i))
+                                  except socket.error:
+                                    servername = "TCP"
+                                  except OSError:
+                                    servername = "TCP"
+                                  print(yl+ip+wi+":"+gr+str(i)+wi+"/"+cy+servername+wi+"~"+yl+"TCP "+wi+"STATUS:[ "+gr+"OPEN"+wi+" ]")
 				exit(1)
+
                         except socket.error:
                               print(rd+"\n[-]"+wi+":PORT["+rd+str(p)+wi+"/"+yl+servername+wi+"] <="+rd+"CLOSE!"+wi+"=>")
                         except:
@@ -407,22 +418,41 @@ def main():
 
 	  if len(found) > 0:
 	        print(rd+"---------------------------------\n[#]"+gr+" Result"+rd+" [#]\n")
-	        print(gr+"[*] "+wi+"TARGET:"+bl+" {}\n".format(target)+gr+"[*]"+wi+" OPEN-PORT(S) Found:"+gr+" {}".format(found))
-		print(gr+"[$]"+wi+" Shutdown At: {}".format(timenow))
+	        print(gr+"[*] "+wi+"TARGET:"+bl+" {}\n".format(target)+gr+"[*]"+wi+" OPEN PORT(s) "+gr+"Found!\n")
+                for i in found:
+                 try:
+                  servername = socket.getservbyport(int(i))
+                 except socket.error:
+                  servername = "TCP"
+                 except OSError:
+                  servername = "TCP"
+                 print("   "+yl+ip+wi+":"+gr+str(i)+wi+"/"+cy+servername+wi+"~"+yl+"TCP "+wi+"STATUS:[ "+gr+"OPEN"+wi+" ]")
+		print(gr+"\n[$]"+wi+" Shutdown At: {}".format(timenow))
 	  else:
 		print(gr+"---------------------------------\n[#]"+rd+" Result"+gr+" [#]\n")
-                print(gr+"[*] "+wi+"TARGET: {}\n".format(target)+gr+"[*]"+wi+" OPEN-PORT(S):"+rd+" No Open Port(s) Found !! :(")
+                print(gr+"[*] "+wi+"TARGET:"+yl+" {}\n".format(target)+wl+"["+rd+"!"+yl+"] OPEN PORT(s):"+rd+" No Open Port(s) Found !! :(")
 		print(gr+"[$]"+wi+" Shutdown At: {}".format(timenow))
                 exit(1)
+
          except KeyboardInterrupt:
 	  print(rd+"\n[CTRL+C]:"+yl+"Exiting"+rd+".....")
 	  sleep(2.5)
+          if len(found) > 0:
+           print(gr+"\n["+cy+"*"+gr+"]"+wi+" OPEN PORT(s) "+gr+"Found!\n")
+           for i in found:
+            try:
+               servername = socket.getservbyport(int(i))
+            except socket.error:
+               servername = "TCP"
+            except OSError:
+               servername = "TCP"
+            print(yl+ip+wi+":"+gr+str(i)+wi+"/"+cy+servername+wi+"~"+yl+"TCP "+wi+"STATUS:[ "+gr+"OPEN"+wi+" ]")
 	  exit(1)
 
         else:
                 msgerror()
   else:
-     
+
 	print(parse.usage)
 	exit(1)
 
