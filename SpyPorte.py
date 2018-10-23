@@ -122,8 +122,8 @@ def main():
   elif options.TARGET !=None and options.Oport !=None:
 	target = options.TARGET
 	port = options.Oport
-	if port < 1 or port > 65535:
-           print(rd+"\n["+yl+"!"+rd+"]"+yl+" Error: Invalid PORT[ "+wi+str(port)+yl+" ]\n"+rd+"["+yl+"!"+rd+"]"+yl+" Must be between [ "+wi+"1 "+yl+"&"+wi+" 65535"+yl+" ]")
+	if port < 0 or port > 65535:
+           print(rd+"\n["+yl+"!"+rd+"]"+yl+" Error: Invalid PORT[ "+wi+str(port)+yl+" ]\n"+rd+"["+yl+"!"+rd+"]"+yl+" Must Be Between [ "+wi+"0 "+yl+"&"+wi+" 65535"+yl+" ]")
            exit(1)
 	def servername():
 	  try:
