@@ -122,6 +122,9 @@ def main():
   elif options.TARGET !=None and options.Oport !=None:
 	target = options.TARGET
 	port = options.Oport
+	if port < 1 or port > 65535:
+           print(rd+"\n["+yl+"!"+rd+"]"+yl+" Error: Invalid PORT[ "+wi+str(port)+yl+" ]\n"+rd+"["+yl+"!"+rd+"]"+yl+" Must be between [ "+wi+"1 "+yl+"&"+wi+" 65535"+yl+" ]")
+           exit(1)
 	def servername():
 	  try:
 	     ser = socket.getservbyport(int(port))
@@ -316,6 +319,9 @@ def main():
 	  if int(ports[0]) > int(ports[1]):
 		print(rd+"\n[!] "+yl+"Wrong,The First Range Port"+gr+"["+rd+str(ports[0])+gr+"]"+yl+" Is Bigger Than Last Range Port"+gr+"["+rd+str(ports[1])+gr+"]"+rd+" !!!")
 		exit(1)
+	  elif int(ports[0]) > 65535 or int(ports[1]) > 65535:
+             print(rd+"\n["+yl+"!"+rd+"]"+yl+" Error: Invalid Range-PORT[ "+wi+str(ports)+yl+" ]\n"+rd+"["+yl+"!"+rd+"]"+yl+" Must be between [ "+wi+"0 "+yl+"&"+wi+" 65535"+yl+" ]")
+             exit(1)
         else:
                 print(rd+"\n[!]"+yl+"[ERROR] Please Use"+gr+" ["+yl+" - "+gr+"]"+yl+" For Distinguish First Range to Last Range Ports "+gr+"Ex: "+yl+"1-50")
                 exit(1)
@@ -459,7 +465,6 @@ def main():
 
 if __name__=="__main__":
 	main()
-
 ##############################################################
 ##################### 		     #########################
 #####################   END OF TOOL  #########################
