@@ -406,7 +406,8 @@ def main():
 				print(rd+"[CTRL+C]:"+yl+"Exiting"+rd+".....")
 				sleep(2.5)
                                 if len(found) > 0:
-                                 print(gr+"\n["+cy+"*"+gr+"]"+wi+" OPEN PORT(s) "+gr+"Found!\n")
+                                 print(gr+"\n["+cy+"*"+gr+"]"+wi+" OPEN PORT(s) "+gr+"Found!\n-----------------------------")
+				 loop =1
                                  for i in found:
                                   try:
                                    servername = socket.getservbyport(int(i))
@@ -414,7 +415,8 @@ def main():
                                     servername = "TCP"
                                   except OSError:
                                     servername = "TCP"
-                                  print(yl+ip+wi+":"+gr+str(i)+wi+"/"+cy+servername+wi+"~"+yl+"TCP "+wi+"STATUS:[ "+gr+"OPEN"+wi+" ]")
+                                  print(gr+"\t["+wi+str(loop)+gr+"] "+yl+ip+wi+":"+gr+str(i)+wi+"/"+cy+servername+wi+" STATUS:[ "+gr+"OPEN"+wi+" ]")
+				  loop +=1
 				exit(1)
 
                         except socket.error:
@@ -424,7 +426,8 @@ def main():
 
 	  if len(found) > 0:
 	        print(rd+"---------------------------------\n[#]"+gr+" Result"+rd+" [#]\n")
-	        print(gr+"[*] "+wi+"TARGET:"+bl+" {}\n".format(target)+gr+"[*]"+wi+" OPEN PORT(s) "+gr+"Found!\n")
+	        print(gr+"[*] "+wi+"TARGET:"+bl+" {}\n".format(target)+gr+"[*]"+wi+" OPEN PORT(s) "+gr+"Found!\n-----------------------------")
+		loop =1
                 for i in found:
                  try:
                   servername = socket.getservbyport(int(i))
@@ -432,7 +435,8 @@ def main():
                   servername = "TCP"
                  except OSError:
                   servername = "TCP"
-                 print("   "+yl+ip+wi+":"+gr+str(i)+wi+"/"+cy+servername+wi+"~"+yl+"TCP "+wi+"STATUS:[ "+gr+"OPEN"+wi+" ]")
+                 print(gr+"\t["+wi+str(loop)+gr+"] "+yl+ip+wi+":"+gr+str(i)+wi+"/"+cy+servername+wi+" STATUS:[ "+gr+"OPEN"+wi+" ]")
+		 loop +=1
 		print(gr+"\n[$]"+wi+" Shutdown At: {}".format(timenow))
 	  else:
 		print(gr+"---------------------------------\n[#]"+rd+" Result"+gr+" [#]\n")
@@ -444,7 +448,8 @@ def main():
 	  print(rd+"\n[CTRL+C]:"+yl+"Exiting"+rd+".....")
 	  sleep(2.5)
           if len(found) > 0:
-           print(gr+"\n["+cy+"*"+gr+"]"+wi+" OPEN PORT(s) "+gr+"Found!\n")
+           print(gr+"\n["+cy+"*"+gr+"]"+wi+" OPEN PORT(s) "+gr+"Found!\n-----------------------------")
+	   loop = 1
            for i in found:
             try:
                servername = socket.getservbyport(int(i))
@@ -452,7 +457,8 @@ def main():
                servername = "TCP"
             except OSError:
                servername = "TCP"
-            print(yl+ip+wi+":"+gr+str(i)+wi+"/"+cy+servername+wi+"~"+yl+"TCP "+wi+"STATUS:[ "+gr+"OPEN"+wi+" ]")
+            print(gr+"\t["+wi+str(loop)+gr+"] "+yl+ip+wi+":"+gr+str(i)+wi+"/"+cy+servername+wi+" STATUS:[ "+gr+"OPEN"+wi+" ]")
+	    loop+=1
 	  exit(1)
 
         else:
