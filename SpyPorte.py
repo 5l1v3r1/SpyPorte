@@ -440,7 +440,7 @@ def main():
                 print(gr+"\n[$]"+wi+" Shutdown At: {}".format(timenow))
           else:
                 print(gr+"---------------------------------\n[#]"+rd+" Result"+gr+" [#]\n")
-                print(gr+"[*] "+wi+"TARGET:"+yl+" {}\n".format(target)+wl+"["+rd+"!"+yl+"] OPEN PORT(s):"+rd+" No Open Port(s) Found !! :(")
+                print(gr+"[*] "+wi+"TARGET:"+yl+" {}\n".format(target)+wi+"["+rd+"!"+yl+"] OPEN PORT(s):"+rd+" No Open Port(s) Found !! :(")
                 print(gr+"[$]"+wi+" Shutdown At: {}".format(timenow))
                 exit(1)
 
